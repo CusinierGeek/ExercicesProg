@@ -231,7 +231,7 @@ static void TriBulles()
 
         Console.WriteLine("Avant le tri à bulles : " + TableuToString(tableau));
 
-        int temp;
+        int temp = 0;
         for (int j = 0; j <= tableau.Length - 2; j++)
         {
             for (int i = 0; i <= tableau.Length - 2; i++)
@@ -248,3 +248,4 @@ static void TriBulles()
         }
         Console.WriteLine("Après le tri à bulles : " + TableuToString(tableau));
     }
+
