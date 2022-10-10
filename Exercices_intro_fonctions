@@ -1,6 +1,7 @@
 //EX01();
 //EX02();
-//EX03();
+
+EX03();
 //EX04();
 //EX05();
 //EX06();
@@ -26,15 +27,41 @@ static void EX01()
 
 static void EX02()
 {
-    //Console.WriteLine(EstPair(200));
-    //Console.WriteLine(EstPair(201));
+    static bool EstPair(int nombre)
+    {
+        if (nombre % 2 != 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+
+    Console.WriteLine(EstPair(200));
+    Console.WriteLine(EstPair(201));
 }
 
 
 static void EX03()
 {
-    //Console.WriteLine(QuestionReponse("Êtes-vous mariez ? "));
-    //Console.WriteLine(QuestionReponse("Êtes-vous majeur ? "));
+    static bool QuestionReponse(string reponse)
+    {
+        if (reponse == "oui")
+        {
+            return true;
+        }
+
+        else if (reponse == "non")
+        {
+            return false;
+        }
+
+        return false;
+    }
+
+    Console.WriteLine(QuestionReponse("oui ?"));
+    Console.WriteLine(QuestionReponse("Êtes-vous majeur ? "));
 }
 
 
@@ -89,4 +116,4 @@ static string TableuToString(int[] tableau)
     int i;
     for (i = 0; i < tableau.Length - 1; i++) s += $"{tableau[i]}, ";
     return s += $"{tableau[i]}]";
-}
+
