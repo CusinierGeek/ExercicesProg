@@ -1,12 +1,15 @@
 //EX01();
 //EX02();
 
-EX03();
+//EX03();
+
 //EX04();
+
 //EX05();
 //EX06();
 //EX07();
-//EX08();
+
+EX08();
 
 
 static void EX01()
@@ -52,7 +55,7 @@ static void EX03()
             return true;
         }
 
-        else if (reponse == "non")
+        if (reponse == "non")
         {
             return false;
         }
@@ -60,60 +63,184 @@ static void EX03()
         return false;
     }
 
-    Console.WriteLine(QuestionReponse("oui ?"));
-    Console.WriteLine(QuestionReponse("Êtes-vous majeur ? "));
+    string reponse = "";
+    do
+    {
+        Console.WriteLine("Êtes-vous marié ?");
+        reponse = Console.ReadLine();
+    } while (reponse != "oui" && reponse != "non");
+
+    Console.WriteLine(QuestionReponse(reponse));
+    do
+    {
+        Console.WriteLine("Êtes-vous majeur ?");
+        reponse = Console.ReadLine();
+    } while (reponse != "oui" && reponse != "non");
+
+    Console.WriteLine(QuestionReponse(reponse));
 }
 
 
 static void EX04()
 {
-    //Console.WriteLine(PlusGrandEntier(3, 2, 1));
-    //Console.WriteLine(PlusGrandEntier(2, 3, 1));
-    //Console.WriteLine(PlusGrandEntier(1, 2, 3));
+    static int PlusGrandEntier(int entier1, int entier2, int entier3)
+    {
+        int[] tableau = { entier1, entier2, entier3 };
+
+
+        int valeurMax = tableau.Max();
+
+
+        return valeurMax;
+    }
+
+    Console.WriteLine(PlusGrandEntier(3, 2, 1));
+    Console.WriteLine(PlusGrandEntier(2, 3, 1));
+    Console.WriteLine(PlusGrandEntier(1, 2, 3));
 }
 
 
 static void EX05()
 {
-    //Console.WriteLine(OccurrencesLettre("Bonjour la terre", 'o'));
-    //Console.WriteLine(OccurrencesLettre("Bonjour la terre", 'z'));
-    //Console.WriteLine(OccurrencesLettre("Bonjour la terre", 'e'));
-    //Console.WriteLine(OccurrencesLettre("Bonjour la terre", 'B'));
+    static int OccurrencesLettre(string phrase, char lettre)
+    {
+        char[] tableaulettre = phrase.ToCharArray();
+        int occurence = 0;
+        foreach (char lettreTemp in phrase)
+        {
+            if (lettreTemp == lettre)
+            {
+                occurence++;
+            }
+        }
+
+        return occurence;
+    }
+
+    Console.WriteLine(OccurrencesLettre("Bonjour la terre", 'o'));
+    Console.WriteLine(OccurrencesLettre("Bonjour la terre", 'z'));
+    Console.WriteLine(OccurrencesLettre("Bonjour la terre", 'e'));
+    Console.WriteLine(OccurrencesLettre("Bonjour la terre", 'B'));
 }
 
 
 static void EX06()
 {
-    //Console.WriteLine(ChainesEgales("Bonjour", "Bonjour"));
-    //Console.WriteLine(ChainesEgales("Bonjour", "Aurevoir"));
-    //Console.WriteLine(ChainesEgales("Bonjour", "BonjouR"));
-    //Console.WriteLine(ChainesEgales("", ""));
+    static bool ChainesEgales(string chaine1, string chaine2)
+    {
+        char[] tableau1 = chaine1.ToCharArray();
+        char[] tableau2 = chaine2.ToCharArray();
+        if (tableau1.Length != tableau2.Length)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < tableau1.Length; i++)
+        {
+            if (tableau1[i] != tableau2[i])
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    Console.WriteLine(ChainesEgales("Bonjour", "Bonjour"));
+    Console.WriteLine(ChainesEgales("Bonjour", "Aurevoir"));
+    Console.WriteLine(ChainesEgales("Bonjour", "BonjouR"));
+    Console.WriteLine(ChainesEgales("", ""));
 }
 
 
 static void EX07()
 {
-    //Console.WriteLine(SommeTableauEntiers(new int[] { }));
-    //Console.WriteLine(SommeTableauEntiers(new int[] { 1, 2, 3, 4, 5 }));
-    //Console.WriteLine(SommeTableauEntiers(new int[] { 1, -1, 1, -1 }));
-}
+    static int SommeTableauEntiers(int[] tableauEntiers)
+    {
+        int somme = 0;
+        foreach (int entier in tableauEntiers)
+        {
+            somme += entier;
+        }
 
+        return somme;
+    }
+
+    Console.WriteLine(SommeTableauEntiers(new int[] { }));
+    Console.WriteLine(SommeTableauEntiers(new int[] { 1, 2, 3, 4, 5 }));
+    Console.WriteLine(SommeTableauEntiers(new int[] { 1, -1, 1, -1 }));
+}
 
 static void EX08()
 {
-    //int[] tab = new int[] { 1, 2, 3, 4, 5 };
-    //TriParSelection(tab, false);
-    //Console.WriteLine(TableuToString(tab));
-    //TriParSelection(tab);
-    //Console.WriteLine(TableuToString(tab));
+    static void TriParSelection(int[] tab, bool croissant)
+    {
+        if (croissant == false)
+        {
+            int positionMax = 0;
+            int temp = 0;
+
+            for (int i = 0; i < tab.Length - 1; i++)
+            {
+                positionMax = i;
+
+                for (int j = i + 1; j < tab.Length; j++)
+                {
+                    if (tab[j] > tab[positionMax])
+                    {
+                        positionMax = j;
+                    }
+                }
+
+                if (positionMax != i)
+                {
+                    temp = tab[i];
+                    tab[i] = tab[positionMax];
+                    tab[positionMax] = temp;
+                }
+            }
+        }
+
+        if (croissant != false)
+        {
+            int positionMin = 0;
+            int temp = 0;
+
+            for (int i = 0; i < tab.Length - 1; i++)
+            {
+                positionMin = i;
+
+                for (int j = i + 1; j < tab.Length; j++)
+                {
+                    if (tab[j] < tab[positionMin])
+                    {
+                        positionMin = j;
+                    }
+                }
+
+                if (positionMin != i)
+                {
+                    temp = tab[i];
+                    tab[i] = tab[positionMin];
+                    tab[positionMin] = temp;
+                }
+            }
+        }
+    }
+
+    int[] tab = new int[] { 1, 2, 3, 4, 5 };
+    TriParSelection(tab, false);
+    Console.WriteLine(TableuToString(tab));
+    TriParSelection(tab,true);
+    Console.WriteLine(TableuToString(tab));
+
+
+    static string TableuToString(int[] tableau)
+    {
+        if (tableau.Length == 0) return "[]";
+        string s = "[";
+        int i;
+        for (i = 0; i < tableau.Length - 1; i++) s += $"{tableau[i]}, ";
+        return s += $"{tableau[i]}]";
+    }
 }
-
-
-static string TableuToString(int[] tableau)
-{
-    if (tableau.Length == 0) return "[]";
-    string s = "[";
-    int i;
-    for (i = 0; i < tableau.Length - 1; i++) s += $"{tableau[i]}, ";
-    return s += $"{tableau[i]}]";
-
